@@ -1,11 +1,23 @@
-<h2>DragonBall Z</h2>
-<hr>
-
-<div class="row">
-    <div class="column my-5">
-        <dbz-characters></dbz-characters>
+<div class="container">
+    <div class="title-zone">
+        <h2>DragonBall Z</h2>
+    </div>
+    <hr>
+    <div class="buttons-zone" *ngIf="!isNewCreated">
+        <button class="btn btn-outline-success" (click)="createNewCharacter(true)">
+            <strong>Create new character</strong>
+        </button>
     </div>
     <div class="column">
-        <dbz-newcharacter></dbz-newcharacter>
+        <div class="column my-5" *ngIf="!isNewCreated">
+            <dbz-characters 
+            [characters]="characters" 
+            (onCharacterDelete)="deleteCharacterById($event)">
+            </dbz-characters>
+        </div>
+        <div *ngIf="isNewCreated">
+            <dbz-newcharacter (onNewCharacter)="onNewCharacter($event)"
+                (onNewCreated)="createNewCharacter($event)"></dbz-newcharacter>
+        </div>
     </div>
 </div>

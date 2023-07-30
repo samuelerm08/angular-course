@@ -1,5 +1,27 @@
-<h3>Characters</h3>
-<ul class="list-group">
-    <li class="list-group-item">Goku - 10000</li>
-    <li class="list-group-item">Ginyu - 100</li>
-</ul>
+<div class="container m-5">
+    <h3>Characters</h3>
+    <table class="table br-10">
+        <thead>
+            <tr class="table-primary">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Power Level</th>
+                <th>Age</th>
+                <th>Special Power</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let char of characters" class="table-secondary">
+                <td>{{char.id}}</td>
+                <td>{{char.name}}</td>
+                <td>{{char.powerLevel}}</td>
+                <td>{{char.age}}</td>
+                <td>{{specialPwrs[char.specialPower]}}</td>
+                <td>
+                    <button class="btn btn-outline-danger m-2" (click)="deleteCharacter(char.id!)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
