@@ -1,18 +1,21 @@
 #container-component {
     text-align: center;
+    position: relative;
+    z-index: 1;
+    bottom: 120px;
 }
+
 #form-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 300px;
-    height: 400px;
+    height: 470px;
     padding: 10px;
-    border: 1px solid gray;
     border-radius: 5px;
 }
 
-#form-newcharacter {
+#form-editcharacter {
     display: flex;
     flex-direction: column;
     width: 60%;

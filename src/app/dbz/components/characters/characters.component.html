@@ -1,4 +1,4 @@
-<div class="container m-5">
+<div class="container" [ariaDisabled]="isEditModalOpened">
     <h3>Characters</h3>
     <table class="table br-10">
         <thead>
@@ -19,7 +19,12 @@
                 <td>{{char.age}}</td>
                 <td>{{specialPwrs[char.specialPower]}}</td>
                 <td>
-                    <button class="btn btn-outline-danger m-2" (click)="deleteCharacter(char.id!)">Delete</button>
+                    <button class="btn btn-outline-warning m-2" (click)="editCharacter(char, true)"
+                        [disabled]="isModalOpened || isEditModalOpened">Edit</button>
+                    <button class="btn btn-outline-danger m-2" (click)="deleteCharacter(char.id!)"
+                        [disabled]="isModalOpened || isEditModalOpened">Delete</button>
+                    <button class="btn btn-outline-success m-2" (click)="getById(char, true)"
+                        [disabled]="isModalOpened || isEditModalOpened">Details</button>
                 </td>
             </tr>
         </tbody>

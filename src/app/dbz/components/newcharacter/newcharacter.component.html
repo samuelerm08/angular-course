@@ -4,18 +4,23 @@
                 <form class="row " id="form-newcharacter" (ngSubmit)="addCharacter(false)">
                         <label for="name">Character Name</label>
                         <input type="text" class="form-control mb-2" [(ngModel)]="character!.name" name="name">
+
                         <label for="power">Power Level</label>
                         <input type="number" class="form-control mb-2" [(ngModel)]="character!.powerLevel" name="power">
+
                         <label for="age">Age</label>
                         <input type="number" class="form-control mb-2" [(ngModel)]="character!.age" name="age">
+
                         <label for="specialPower">Special Power</label>
-                        <select name="specialpower" class="form-control mb-2" [(ngModel)]="character!.specialPower">
-                                <option name="specialPower" [value]="0">Kamehameha</option>
-                                <option name="specialPower" [value]="1">Masenko</option>
-                                <option name="specialPower" [value]="2">Henkidama</option>
-                                <option name="specialPower" [value]="3">Kaioken</option>
+                        <select name="specialpower" class="form-select mb-2" [(ngModel)]="character!.specialPower">
+                                <option *ngFor="let power of specialPwrs | keyvalue" name="specialPower"
+                                        [value]="power.key">
+                                        {{power.value}}
+                                </option>
                         </select>
-                        <button type="submit" class="btn btn-outline-primary">Insert Character</button>
+                        <button type="submit" class="btn btn-outline-primary mb-2">Insert Character</button>
+                        <button type="button" class="btn btn-outline-danger" (click)="toMainPage(true)">Back to
+                                homepage</button>
                 </form>
         </div>
 </div>

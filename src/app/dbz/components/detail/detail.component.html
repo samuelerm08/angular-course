@@ -1,0 +1,39 @@
+<div class="card" id="detailView">
+    <div class="card-body">
+      <h4 class="card-title">Details</h4>
+      <hr>
+      <dl class="row">
+        <dt class="col-sm-2">
+            Name
+        </dt>
+        <dd class="col-sm-10">
+            {{character?.name}}
+        </dd>
+
+        <dt class="col-sm-2">
+            Power Level
+        </dt>
+        <dd class="col-sm-10">
+            {{character?.powerLevel}}
+        </dd>
+
+        <dt class="col-sm-2">
+            Age
+        </dt>
+        <dd class="col-sm-10">
+            {{character?.age}}
+        </dd>  
+        
+        <dt class="col-sm-2">
+            Special Power
+        </dt>
+        <dd class="col-sm-10">
+            {{specialPwrs[character!.specialPower]}}
+        </dd> 
+    </dl>
+      <button class="btn btn-outline-success"
+              (click)="modalOpened(false)">
+            Return to list
+      </button>
+    </div>
+  </div>

@@ -8,20 +8,31 @@ import { DbzService } from '../services/dbz.service';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent {
+
+  public character?: Character;
+  public isNewCreated?: boolean;
+  public modalOpened?: boolean;
+  public editModalOpened?: boolean;  
+  public isMainPage?: boolean;
   constructor(private dbz: DbzService) { }
-  get characters(): Character[] {
-    return this.dbz.characters;
+  public createNewCharacter(isNotCreated: boolean): void {
+    this.isNewCreated = isNotCreated;
+    this.isMainPage = false;
   }
-  get isNewCreated(): boolean {
-    return this.dbz.isNewCreated;
+
+  public onModalOpened(modalOpened: boolean): void {
+    this.modalOpened = modalOpened;
   }
-  createNewCharacter(isCreated: boolean): void {
-    this.dbz.createNewCharacter(isCreated);
+
+  public onEditCharacter(editCharacterModal: boolean): void {
+    this.editModalOpened = editCharacterModal;
   }
-  deleteCharacterById(id: string): void {
-    this.dbz.deleteCharacterById(id);
+
+  public getCharacter(character: Character): void {
+    this.character = character;
   }
-  onNewCharacter(character: Character): void {
-    this.dbz.onNewCharacter(character);
-  } 
+
+  public onMainpage(returned?: boolean): void {
+    this.isMainPage = returned;
+  }
 }

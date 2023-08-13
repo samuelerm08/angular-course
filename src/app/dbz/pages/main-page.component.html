@@ -3,21 +3,37 @@
         <h2>DragonBall Z</h2>
     </div>
     <hr>
-    <div class="buttons-zone" *ngIf="!isNewCreated">
-        <button class="btn btn-outline-success" (click)="createNewCharacter(true)">
+    <div class="buttons-zone" *ngIf="!isNewCreated || isMainPage">
+        <button class="btn btn-outline-success" (click)="createNewCharacter(true)" [disabled]="modalOpened || editModalOpened">
             <strong>Create new character</strong>
         </button>
     </div>
     <div class="column">
-        <div class="column my-5" *ngIf="!isNewCreated">
-            <dbz-characters 
-            [characters]="characters" 
-            (onCharacterDelete)="deleteCharacterById($event)">
+        <div class="column my-5" *ngIf="!isNewCreated || isMainPage">
+            <dbz-characters
+                (onDetail)="getCharacter($event)"
+                (onEdit)="getCharacter($event)"
+                (onModalOpened)="onModalOpened($event)"
+                (onEditModalOpened)="onEditCharacter($event)"
+                [isModalOpened]="modalOpened"
+                [isEditModalOpened]="editModalOpened">
             </dbz-characters>
         </div>
-        <div *ngIf="isNewCreated">
-            <dbz-newcharacter (onNewCharacter)="onNewCharacter($event)"
-                (onNewCreated)="createNewCharacter($event)"></dbz-newcharacter>
+        <div *ngIf="isNewCreated && !isMainPage">
+            <dbz-newcharacter 
+            (onNewCreated)="createNewCharacter($event)"
+            (onReturnToMain)="onMainpage($event)"></dbz-newcharacter>
+        </div>
+        <div *ngIf="modalOpened">
+            <dbz-detail
+            [character]="this.character"
+            (onModalOpened)="onModalOpened($event)"></dbz-detail>
+        </div>
+        <div *ngIf="editModalOpened">
+            <dbz-editcharacter
+            [character]="character"
+            (onEditModalOpened)="onEditCharacter($event)">
+            </dbz-editcharacter>
         </div>
     </div>
 </div>

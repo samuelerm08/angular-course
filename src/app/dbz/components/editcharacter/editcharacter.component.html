@@ -1,0 +1,27 @@
+<div id="container-component" class="card">
+    <h3>Edit Character</h3>
+    <div id="form-container">
+        <form class="row " id="form-editcharacter" (ngSubmit)="editCharacter(false)">
+            <label for="name">Character Id</label>
+            <input type="text" class="form-control mb-2" [(ngModel)]="character!.id" name="id" [disabled]="true">
+
+            <label for="name">Character Name</label>
+            <input type="text" [maxlength]="20" class="form-control mb-2" [(ngModel)]="character!.name" name="name">
+
+            <label for="power">Power Level</label>
+            <input type="text" [maxlength]="5" class="form-control mb-2" [(ngModel)]="character!.powerLevel" name="power">
+
+            <label for="age">Age</label>
+            <input type="text" [maxLength]="5" class="form-control mb-2" [(ngModel)]="character!.age" name="age">
+
+            <label for="specialPower">Special Power</label>
+            <select name="specialpower" class="form-select mb-2" [(ngModel)]="character!.specialPower">
+                <option *ngFor="let power of specialPwrs | keyvalue" name="specialPower" [value]="power.key">
+                    {{power.value}}
+                </option>
+            </select>
+            <button type="submit" class="btn btn-outline-primary mb-2">Edit Character</button>
+            <button type="button" class="btn btn-outline-danger" (click)="modalOpened(false)">Return to List</button>
+        </form>
+    </div>
+</div>
